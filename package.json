@@ -1,0 +1,19 @@
+{
+  "name": "info442---uwguesser",
+  "version": "1.0.0",
+  "description": "UW Geoguesser!",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/klipsey/INFO442---UWGuesser.git"
+  },
+  "author": "Kenta Lipsey",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/klipsey/INFO442---UWGuesser/issues"
+  },
+  "homepage": "https://github.com/klipsey/INFO442---UWGuesser#readme"
+}
