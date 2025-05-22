@@ -23,23 +23,17 @@ function initMap() {
     cafeIcon.src =
     "https://developers.google.com/maps/documentation/javascript/examples/full/images/cafe_icon.svg";
 
-    const dollarIcon = document.createElement("img");
-
-    dollarIcon.src =
-    "https://developers.google.com/maps/documentation/javascript/examples/full/images/bank_icon.svg";
-
-    const busIcon = document.createElement("img");
-
-    busIcon.src =
-    "https://developers.google.com/maps/documentation/javascript/examples/full/images/bus_icon.svg";
-
     // Set up the markers on the map
     const cafeMarker = new google.maps.Marker({
-    position: buildings[rand][1],
-    map,
-    title: "BuildingToGuess",
-    icon: cafeIcon.src,
+        position: buildings[rand][1],
+        map,
+        title: "BuildingToGuess",
+        icon: cafeIcon.src,
+        gmpClickable: true
     });
+
+
+    cafeMarker.addListener("click", initMap);
 
     // We get the map's default panorama and set up some defaults.
     // Note that we don't yet set it visible.
@@ -58,6 +52,10 @@ function initMap() {
     }
     )
     panorama.setVisible(true);
+}
+
+function test() {
+    console.log("Clicked");
 }
 
 window.initMap = initMap;
