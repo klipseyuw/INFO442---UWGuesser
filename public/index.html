@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<!--
+ @license
+ Copyright 2019 Google LLC. All Rights Reserved.
+ SPDX-License-Identifier: Apache-2.0
+-->
+<html lang="en">
+  <head>
+    <title>Street View split-map-panes</title>
+    <script>
+      /**
+       * @license
+       * Copyright 2019 Google LLC. All Rights Reserved.
+       * SPDX-License-Identifier: Apache-2.0
+       */
+      function initialize() {
+        const fenway = { lat: 42.345573, lng: -71.098326 };
+        const map = new google.maps.Map(document.getElementById("map"), {
+          center: fenway,
+          zoom: 14,
+        });
+        const panorama = new google.maps.StreetViewPanorama(
+          document.getElementById("pano"),
+          {
+            position: fenway,
+            pov: {
+              heading: 34,
+              pitch: 10,
+            },
+          }
+        );
+
+        map.setStreetView(panorama);
+      }
+
+      window.initialize = initialize;
+    </script>
+    <title>UW Geoguesser</title>
+    <meta name="description" content="">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="google-site-verification" content="_pkbWecIoYwaevZHcW_HoVr5iR0BhSTcOvSRH6W0EkI" />
+    <!--<link rel="icon" type="image/" href="images/logo.png">-->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/gmap.css">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+  </head>
+  <body>
+    <div id="map"></div>
+    <div id="pano"></div>
+    <script
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAmN-pywUQGw-Lpn-uSKm0bo4YCNeGzYLU&v=weekly&channel=2&libraries=places"
+      defer
+    ></script>
+
+    
+    <script src="js/index.js "></script>
+    <script src="js/gmap.js "></script>
+  </body>
+</html>
