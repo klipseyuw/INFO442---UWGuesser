@@ -21,7 +21,7 @@
 
   </head>
 
-  <body>
+  <body>  
     <!-- Start Screen Section -->
     <!--
     <section id="start-screen" class="screen start-screen">
@@ -193,10 +193,24 @@
     </section> -->
 
 
+    <h3 id = "header">Type your Guess</h3>
+
+    <input type="text" id="answerText" value="">
+
+    <button onclick="submitAnswer()">Submit</button>
+
+    <p id ="dubsScore">Dubs Score: 0</p>
+
     <div id="map"></div>
-    <div id="pano"></div>
+    <!-- 
+      The `defer` attribute causes the script to execute after the full HTML
+      document has been parsed. For non-blocking uses, avoiding race conditions,
+      and consistent behavior across browsers, consider loading using Promises. See
+      https://developers.google.com/maps/documentation/javascript/load-maps-js-api
+      for more information.
+      -->
     <script
-      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB41DRUbKWJHPxaFjMAwdrzWzbVKartNGg&callback=initialize&v=weekly"
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB41DRUbKWJHPxaFjMAwdrzWzbVKartNGg&callback=initMap&libraries=marker&v=weekly"
       defer
     ></script>
   </body>
