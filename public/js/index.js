@@ -62,7 +62,20 @@ function resetTimer() {
 const buildings = 
 [[{lat: 47.6557022, lng: -122.3045488}, {name: "HUB", lat: 47.6553893, lng: -122.3050845}], 
 [{lat: 47.6561734, lng: -122.3093858}, {name: "Kane Hall", lat: 47.6567387, lng: -122.3092925}], 
-[{lat: 47.6559409, lng: -122.3075026}, {name: "Suzzalo Library", lat: 47.6557702, lng: -122.3078427}]]
+[{lat: 47.6559409, lng: -122.3075026}, {name: "Suzzalo Library", lat: 47.6557702, lng: -122.3078427}],
+[{lat: 47.6570572, lng: -122.3081083}, {name: "Savery Hall", lat: 47.6571049, lng: -122.3084395}],
+[{lat: 47.6537402, lng: -122.3022781}, {name: "IMA", lat: 47.6536324, lng: -122.301743}],
+[{lat: 47.6594996, lng: -122.3092793}, {name: "Paccar Hall", lat: 47.6592885, lng: -122.309018}],
+[{lat: 47.6611535, lng: -122.3049842}, {name: "Mcarty Hall", lat: 47.6607858, lng: -122.3050633}],
+[{lat: 47.6572705, lng: -122.3099538}, {name: "Parrington Hall", lat: 47.6574064, lng: -122.3103142}],
+[{lat: 47.6568756, lng: -122.3038113}, {name: "Padelford Hall", lat: 47.6569805, lng: -122.3043341}],
+[{lat: 47.6547817, lng: -122.308488}, {name: "Johnson Hall", lat: 47.65464, lng: -122.3089812}],
+[{lat: 47.6520118, lng: -122.3076246}, {name: "Anderson Hall", lat: 47.6517702, lng: -122.3076372}],
+[{lat: 47.654397, lng: -122.3046174}, {name: "Loew Hall", lat: 47.654356, lng: -122.3045936}],
+[{lat: 47.653703, lng: -122.3082073}, {name: "Department of Chemistry", lat: 7.6536421, lng: -122.3088239}],
+[{lat: 47.6566197, lng: -122.30759}, {name: "Smith Hall", lat: 47.656444, lng: -122.3075479}],
+[{lat: 47.6552755, lng: -122.3081542}, {name: "Mary Gates Hall", lat: 47.6549795, lng: -122.308008}],
+[{lat: 47.6514765, lng: -122.3082401}, {name: "Bloedel Hall", lat: 47.6513557, lng: -122.3079801}]]
 
 let buildingsInstance;
 
@@ -117,7 +130,7 @@ function switchToWrongAnswerPage()
     document.getElementById('round-info').innerHTML = "Round " + (buildings.length - buildingsInstance.length) + "/" + buildings.length;
 
     document.getElementById('wrong-score-count').innerHTML = score;
-        document.getElementById('retry-btn').addEventListener("click", switchToMapPageReset);
+    document.getElementById('retry-btn').addEventListener("click", switchToMapPageReset);
     document.getElementById('later-btn').addEventListener("click", switchToMainPage);
 }
 
@@ -169,17 +182,34 @@ function setNextMap() {
     disableDefaultUI: true
     });
 
-    const cafeIcon = document.createElement("img");
+    const buildingIcon = document.createElement("img");
 
-    cafeIcon.src =
-    "https://developers.google.com/maps/documentation/javascript/examples/full/images/cafe_icon.svg";
+    buildingIcon.src = "./images/BuildingToGuess.svg";
 
     // Set up the markers on the map
-    dubsMarker = new google.maps.Marker({
+    buildingMarker = new google.maps.Marker({
         position: buildingsInstance[currentBuildingIndex][1],
         map,
         title: "BuildingToGuess",
-        icon: cafeIcon.src,
+        icon: buildingIcon.src,
+        gmpClickable: false,
+    });
+
+    buildingMarker.setMap(map);
+
+    const dubsIcon = document.createElement("img");
+
+        dubsIcon.src = "./images/Dubs.svg";
+
+    const dubsRandomizedLoc = buildingsInstance[currentBuildingIndex][1];
+    dubsRandomizedLoc.lat += Math.random() * 0.001;
+    dubsRandomizedLoc.lng += Math.random() * 0.001; 
+
+    dubsMarker = new google.maps.Marker({
+        position: dubsRandomizedLoc,
+        map,
+        title: "DubsIcon",
+        icon: dubsIcon.src,
         gmpClickable: true,
     });
 
