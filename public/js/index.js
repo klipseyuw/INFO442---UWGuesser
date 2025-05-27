@@ -1,12 +1,57 @@
+// SET THE TIME LIMIT OF YOUR CHOICE HERE IN SECONDS!
+const timeLimit = 60;
+
+/* 
+
+HOW TO ADD NEW BUILDINGS INSTRUCTIONS
+
+Format for each entry:
+lat => latitude
+lng => longitude
+name => name used to identify building
+
+
+The first entry is the location that you want the street view
+To find the lat and lng, go to a google street view and in the URL, there will be 2 numbers similar to the ones provided already.
+
+Example: 
+https://www.google.com/maps/place/PACCAR+Hall/@47.6593012,-122.3093962,3a,75y,86.88h,90t/data=!3m7!1e1!3m5!1s33FYJYy7z5ddYEY5Jowc3w!2e0!6shttps:%2F%2Fstreetviewpixels-pa.googleapis.com%2Fv1%2Fthumbnail%3Fcb_client%3Dmaps_sv.tactile%26w%3D900%26h%3D600%26pitch%3D0%26panoid%3D33FYJYy7z5ddYEY5Jowc3w%26yaw%3D86.88373312129333!7i16384!8i8192!4m6!3m5!1s0x5490148c7ff84a3f:0x8a58dcfd31224abd!8m2!3d47.6593782!4d-122.3090131!16s%2Fg%2F1hd_rw217?entry=ttu&g_ep=EgoyMDI1MDUyMS4wIKXMDSoASAFQAw%3D%3D
+
+The coordinates you would need are lat: 47.6593012, lng: -122.3093962 from above ^
+
+The second entry is the location of the building itself. 
+Instead of being in street view, find the building of your choice in google maps and zoom in on it so it is centered. Then, similarly to above, copy and paste the coordinates.
+
+[{lat:, lng:}, {name:, lat:, lng:}]
+
+
+
+*/
+const buildings = 
+[[{lat: 47.6557022, lng: -122.3045488}, {name: "HUB", lat: 47.6553893, lng: -122.3050845}], 
+[{lat: 47.6561734, lng: -122.3093858}, {name: "Kane Hall", lat: 47.6567387, lng: -122.3092925}], 
+[{lat: 47.6559409, lng: -122.3075026}, {name: "Suzzalo Library", lat: 47.6557702, lng: -122.3078427}],
+[{lat: 47.6570572, lng: -122.3081083}, {name: "Savery Hall", lat: 47.6571049, lng: -122.3084395}],
+[{lat: 47.6537402, lng: -122.3022781}, {name: "IMA", lat: 47.6536324, lng: -122.301743}],
+[{lat: 47.6594996, lng: -122.3092793}, {name: "Paccar Hall", lat: 47.6592853, lng: -122.3088555}],
+[{lat: 47.6611535, lng: -122.3049842}, {name: "Mcarty Hall", lat: 47.6607858, lng: -122.3050633}],
+[{lat: 47.6572705, lng: -122.3099538}, {name: "Parrington Hall", lat: 47.6574064, lng: -122.3103142}],
+[{lat: 47.6568756, lng: -122.3038113}, {name: "Padelford Hall", lat: 47.6569805, lng: -122.3043341}],
+[{lat: 47.6547817, lng: -122.308488}, {name: "Johnson Hall", lat: 47.65464, lng: -122.3089812}],
+[{lat: 47.6520118, lng: -122.3076246}, {name: "Anderson Hall", lat: 47.6517702, lng: -122.3076372}],
+[{lat: 47.654397, lng: -122.3046174}, {name: "Loew Hall", lat: 47.654356, lng: -122.3045936}],
+[{lat: 47.653703, lng: -122.3082073}, {name: "Department of Chemistry", lat: 47.6536421, lng: -122.3088239}],
+[{lat: 47.6566197, lng: -122.30759}, {name: "Smith Hall", lat: 47.656444, lng: -122.3075479}],
+[{lat: 47.6552755, lng: -122.3081542}, {name: "Mary Gates Hall", lat: 47.6549795, lng: -122.308008}],
+[{lat: 47.6514765, lng: -122.3082401}, {name: "Bloedel Hall", lat: 47.6513557, lng: -122.3079801}]]
+
 const mainHTML = '<section id="start-screen" class="screen start-screen"><div class="overlay"><div class="start-logo-box"><img src="assets/washington_huskies_2016-pres.webp" alt="UW Logo" class="uw-logo" /><h1 class="title">Guessr</h1></div><button id="start-btn" class="start-button" onclick="switchToRulePage()">Get started</button></div></section>';
 
 const ruleHTML = '<section id="rules-screen" class="screen rules-screen hidden"> <div class="rules-header"> <div class="playbook-label">Purple & Gold Playbook</div> <div class="logo-box"> <img src="assets/washington_huskies_2016-pres.webp" alt="UW Logo" class="uw-logo-small" /> <h1 class="title small">Guessr</h1> </div> </div> <div class="rules-box"> <ol> <li> <strong>Guess the Building</strong><br /> <span>Explore the scene and try to identify the building shown. Use the keyboard arrows to move around and investigate your surroundings.</span> </li> <li> <strong>Bonus Challenge: Find the Dubs</strong><br /> <span>Look closely! Hidden Dubs (UW mascots) are scattered around the building. Count how many you can find for bonus points.</span> </li> <li> <strong>Need Help?!</strong><br /> <span>You get one hint per round — use it wisely!</span> </li> </ol> </div> <button id="continue-btn" class="continue-btn" onclick="switchToMapPageReset()">Continue to First Round</button> </section>';
 
-//<button id="hint-btn" class="hint-btn">Click For Hint!</button>
-
 const mapHTML = '<section id="game-screen" class="screen game-screen hidden"> <div class="game-ui-top-left"><div id="countdown" class="timer">⏱ 00:45</div></div> <div class="game-input-controls"> <h3 id = "header">Type your Guess</h3> <input type="text" id="answerText" placeholder="Answer Here" class="answer-input" /> </div></div><button onclick="submitAnswer()">Submit</button><p id ="dubsScore">Dubs Score: 0</p><div id="map"></div></section>';
 
-const hintHTML = '<section id="hint-screen" class="screen hint-screen hidden"> <div class="game-ui-top-left"> <div id = "countdown" class="timer">⏱ 1:30</div> </div> <div class="hint-options-box"> <form id="building-guess-form"> <label class="hint-option"> <input type="radio" name="building" value="mueller" /> Mueller Hall </label> <label class="hint-option"> <input type="radio" name="building" value="ece" /> ECE </label> <label class="hint-option"> <input type="radio" name="building" value="sav" /> SAV </label> <label class="hint-option"> <input type="radio" name="building" value="paul-allen" /> Paul Allen </label> <button type="submit" class="submit-btn">Submit</button> </form> </div> <div class="arrows"> <span class="arrow">&lt;</span> <span class="arrow">&gt;</span> </div> </section>';
+const hintHTML = '<section id="hint-screen" class="screen hint-screen hidden"> <div class="game-ui-top-left"> <div id = "countdown" class="timer">⏱ 0:45</div> </div> <div class="hint-options-box"> <form id="building-guess-form"> <label class="hint-option"> <input type="radio" name="building" value="mueller" /> Mueller Hall </label> <label class="hint-option"> <input type="radio" name="building" value="ece" /> ECE </label> <label class="hint-option"> <input type="radio" name="building" value="sav" /> SAV </label> <label class="hint-option"> <input type="radio" name="building" value="paul-allen" /> Paul Allen </label> <button type="submit" class="submit-btn">Submit</button> </form> </div> <div class="arrows"> <span class="arrow">&lt;</span> <span class="arrow">&gt;</span> </div> </section>';
 
 const quizHTML = '<section id="dubs-quiz" class="screen dubs-quiz hidden"> <div class="quiz-box"> <h2>How many Dubs did you see?</h2> <p class="quiz-subtext">(Answer correctly to receive extra points!)</p> <form id="dubs-form"> <label class="quiz-option"> <input type="radio" name="dubs" value="1" /> 1 </label> <label class="quiz-option"> <input type="radio" name="dubs" value="3" /> 3 </label> <label class="quiz-option"> <input type="radio" name="dubs" value="5" /> 5 </label> </form> </div> </section> ';
 
@@ -55,27 +100,8 @@ function stopTimer() {
 
 function resetTimer() {
   stopTimer();
-  seconds = 45;
+  seconds = timeLimit;
 }
-
-// Format: Street View coords, marker to guess coords
-const buildings = 
-[[{lat: 47.6557022, lng: -122.3045488}, {name: "HUB", lat: 47.6553893, lng: -122.3050845}], 
-[{lat: 47.6561734, lng: -122.3093858}, {name: "Kane Hall", lat: 47.6567387, lng: -122.3092925}], 
-[{lat: 47.6559409, lng: -122.3075026}, {name: "Suzzalo Library", lat: 47.6557702, lng: -122.3078427}],
-[{lat: 47.6570572, lng: -122.3081083}, {name: "Savery Hall", lat: 47.6571049, lng: -122.3084395}],
-[{lat: 47.6537402, lng: -122.3022781}, {name: "IMA", lat: 47.6536324, lng: -122.301743}],
-[{lat: 47.6594996, lng: -122.3092793}, {name: "Paccar Hall", lat: 47.6592853, lng: -122.3088555}],
-[{lat: 47.6611535, lng: -122.3049842}, {name: "Mcarty Hall", lat: 47.6607858, lng: -122.3050633}],
-[{lat: 47.6572705, lng: -122.3099538}, {name: "Parrington Hall", lat: 47.6574064, lng: -122.3103142}],
-[{lat: 47.6568756, lng: -122.3038113}, {name: "Padelford Hall", lat: 47.6569805, lng: -122.3043341}],
-[{lat: 47.6547817, lng: -122.308488}, {name: "Johnson Hall", lat: 47.65464, lng: -122.3089812}],
-[{lat: 47.6520118, lng: -122.3076246}, {name: "Anderson Hall", lat: 47.6517702, lng: -122.3076372}],
-[{lat: 47.654397, lng: -122.3046174}, {name: "Loew Hall", lat: 47.654356, lng: -122.3045936}],
-[{lat: 47.653703, lng: -122.3082073}, {name: "Department of Chemistry", lat: 7.6536421, lng: -122.3088239}],
-[{lat: 47.6566197, lng: -122.30759}, {name: "Smith Hall", lat: 47.656444, lng: -122.3075479}],
-[{lat: 47.6552755, lng: -122.3081542}, {name: "Mary Gates Hall", lat: 47.6549795, lng: -122.308008}],
-[{lat: 47.6514765, lng: -122.3082401}, {name: "Bloedel Hall", lat: 47.6513557, lng: -122.3079801}]]
 
 let buildingsInstance;
 
@@ -99,6 +125,21 @@ function switchToMapPage()
 {
     document.body.innerHTML = mapHTML + initAPI();
     window.initMap = initMap;
+
+    let secondsCorrected = timeLimit % 60;
+    let minutesCorrected = Math.floor(timeLimit / 60);
+
+    if(secondsCorrected < 10)
+    {
+        secondsCorrected = "0" + secondsCorrected;
+    }
+
+    if(minutesCorrected < 10)
+    {
+        minutesCorrected = "0" + minutesCorrected;
+    }
+
+    document.getElementById("countdown").innerHTML = "⏱ " + minutesCorrected + ":" + secondsCorrected;
 }
 
 // Maybe we don't do hints since moving on the map is technically the hint?
@@ -117,7 +158,7 @@ function switchToCorrectAnswerPage()
     stopTimer();
     document.body.innerHTML = correctHTML;
     document.getElementById('round-info').innerHTML = "Round " + (buildings.length - buildingsInstance.length) + "/" + buildings.length;
-    document.getElementById('score-count').innerHTML = score;
+    document.getElementById('score-count').innerHTML = score + "/" + buildings.length;
 }
 
 function switchToWrongAnswerPage()
@@ -125,14 +166,14 @@ function switchToWrongAnswerPage()
     stopTimer();
     document.body.innerHTML = wrongHTML;
     document.getElementById('round-info').innerHTML = "Round " + (buildings.length - buildingsInstance.length) + "/" + buildings.length;
-    document.getElementById('wrong-score-count').innerHTML = score;
+    document.getElementById('wrong-score-count').innerHTML = score + "/" + buildings.length;
     document.getElementById('wrong-title').innerHTML = "Wrong! Answer is: " + buildingsInstance[currentBuildingIndex][1].name;
 }
 function switchToEndPage()
 {
     stopTimer()
     document.body.innerHTML = endHTML;
-    document.getElementById('final-score').innerHTML = score;
+    document.getElementById('final-score').innerHTML = score + "/" + buildings.length;
 }
 
 function initAPI()
