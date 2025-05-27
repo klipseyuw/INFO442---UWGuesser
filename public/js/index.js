@@ -22,10 +22,10 @@ The coordinates you would need are lat: 47.6593012, lng: -122.3093962 from above
 The second entry is the location of the building itself. 
 Instead of being in street view, find the building of your choice in google maps and zoom in on it so it is centered. Then, similarly to above, copy and paste the coordinates.
 
+In this format, add it to the list below:
 [{lat:, lng:}, {name:, lat:, lng:}]
 
-
-
+Reopen or refresh your game to apply the changes.
 */
 const buildings = 
 [[{lat: 47.6557022, lng: -122.3045488}, {name: "HUB", lat: 47.6553893, lng: -122.3050845}], 
