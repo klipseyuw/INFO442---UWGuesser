@@ -238,7 +238,7 @@ function setNextMap() {
     let dubsRandomizedLoc = [{lat: buildingsInstance[currentBuildingIndex][1].lat + Math.random() * 0.001, lng: buildingsInstance[currentBuildingIndex][1].lng + Math.random() * 0.001}];
 
     dubsMarker = new google.maps.Marker({
-        position: dubsRandomizedLoc,
+        position: dubsRandomizedLoc[0],
         map,
         title: "DubsIcon",
         icon: dubsIcon.src,
