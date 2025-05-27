@@ -1,590 +1,668 @@
-/* 
- * Always set the map height explicitly to define the size of the div element
- * that contains the map. 
- */
+/*
+* Always set the map height explicitly to define the size of the div element
+* that contains the map.
+*/
 #map {
-  height: 100%;
+ height: 100%;
 }
 
-/* 
- * Optional: Makes the sample page fill the window. 
- */
+
+/*
+* Optional: Makes the sample page fill the window.
+*/
 html,
 body {
-  height: 100%;
-  margin: 0;
-  padding: 0;
+ height: 100%;
+ margin: 0;
+ padding: 0;
 }
 
-#floating-panel {
-  position: absolute;
-  top: 10px;
-  left: 25%;
-  z-index: 5;
-  background-color: #fff;
-  padding: 5px;
-  border: 1px solid #999;
-  text-align: center;
-  font-family: "Roboto", "sans-serif";
-  line-height: 30px;
-  padding-left: 10px;
-}
 
 #floating-panel {
-  margin-left: -100px;
+ position: absolute;
+ top: 10px;
+ left: 25%;
+ z-index: 5;
+ background-color: #fff;
+ padding: 5px;
+ border: 1px solid #999;
+ text-align: center;
+ font-family: "Roboto", "sans-serif";
+ line-height: 30px;
+ padding-left: 10px;
 }
+
+
+#floating-panel {
+ margin-left: -100px;
+}
+
 
 /*HOME PAGE STYLING*/
 /* Global reset */
 * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+ margin: 0;
+ padding: 0;
+ box-sizing: border-box;
 }
+
 
 html, body {
-  height: 100%;
+ height: 100%;
 }
 
+
 .start-screen {
-  background: url('../assets/uw-campus.jpg') no-repeat center center;
-  background-size: cover;
-  height: 100vh;
-  position: relative;
+ background: url('../assets/uw-campus.jpg') no-repeat center center;
+ background-size: cover;
+ height: 100vh;
+ position: relative;
 }
+
 
 /* Dark purple overlay & vertical layout */
 .overlay {
-  position: absolute;
-  inset: 0;
-  background: rgba(75, 46, 131, 0.5); /* UW purple overlay */
-  z-index: 0;
+ position: absolute;
+ inset: 0;
+ background: rgba(75, 46, 131, 0.5); /* UW purple overlay */
+ z-index: 0;
 
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+
+ display: flex;
+ flex-direction: column;
+ align-items: center;
+ justify-content: center;
 }
+
 
 /* Center logo and title */
 .start-logo-box {
-  background-color: #D9D9D9;
-  padding: 1.5rem 2rem;
-  border-radius: 30px;
-  box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.25);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 1rem;
-  margin-bottom: 2rem;
-  z-index: 1;
+ background-color: #D9D9D9;
+ padding: 1.5rem 2rem;
+ border-radius: 30px;
+ box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.25);
+ display: flex;
+ align-items: center;
+ justify-content: center;
+ gap: 1rem;
+ margin-bottom: 2rem;
+ z-index: 1;
 }
+
 
 .uw-logo {
-  height: 80px;
-  width: auto;
+ height: 80px;
+ width: auto;
 }
 
+
 .title {
-  font-size: 3rem;
-  color: #B7A57A; /* gold */
-  font-weight: bold;
-  font-family: 'Open Sans', sans-serif;
+ font-size: 3rem;
+ color: #B7A57A; /* gold */
+ font-weight: bold;
+ font-family: 'Open Sans', sans-serif;
 }
+
 
 /* Start button */
 .start-button {
-  padding: 0.75rem 2rem;
-  background-color: #D9D9D9;
-  color: #B7A57A;
-  border: none;
-  border-radius: 30px;
-  font-size: 1.2rem;
-  cursor: pointer;
-  font-weight: 600;
-  z-index: 1;
-  transition: all 0.3s ease;
+ padding: 0.75rem 2rem;
+ background-color: #D9D9D9;
+ color: #B7A57A;
+ border: none;
+ border-radius: 30px;
+ font-size: 1.2rem;
+ cursor: pointer;
+ font-weight: 600;
+ z-index: 1;
+ transition: all 0.3s ease;
 }
 
+
 .start-button:hover {
-  background-color: #b7a57a;
-  color: white;
+ background-color: #b7a57a;
+ color: white;
 }
+
+
 
 
 /* RULES PAGE STYLING */
 .rules-screen {
-  background-color: #6A4EA3; /* UW purple */
-  color: white;
-  min-height: 100vh;
-  padding: 2rem;
-  font-family: 'Irish Grover', cursive;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: flex-start;
+ background-color: #6A4EA3; /* UW purple */
+ color: white;
+ min-height: 100vh;
+ padding: 2rem;
+ font-family: 'Irish Grover', cursive;
+ display: flex;
+ flex-direction: column;
+ align-items: center;
+ justify-content: flex-start;
 }
+
 
 /* Playbook label */
 .playbook-label {
-  background-color: #C1A77B;
-  padding: 0.6rem 1.4rem;
-  border-radius: 20px;
-  color: white;
-  font-weight: 600;
-  font-size: 1rem;
-  margin: 1rem auto;
-  text-align: center;
+ background-color: #C1A77B;
+ padding: 0.6rem 1.4rem;
+ border-radius: 20px;
+ color: white;
+ font-weight: 600;
+ font-size: 1rem;
+ margin: 1rem auto;
+ text-align: center;
 }
+
 
 /* Logo + Guessr title - do NOT change font here */
 .logo-box {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  background-color: #EDEDED;
-  padding: 0.4rem 0.8rem;
-  border-radius: 12px;
-  position: absolute;
-  top: 1.5rem;
-  right: 2rem;
-  font-family: 'Open Sans', sans-serif; /* preserve font here */
+ display: flex;
+ align-items: center;
+ gap: 0.5rem;
+ background-color: #EDEDED;
+ padding: 0.4rem 0.8rem;
+ border-radius: 12px;
+ position: absolute;
+ top: 1.5rem;
+ right: 2rem;
+ font-family: 'Open Sans', sans-serif; /* preserve font here */
 }
+
 
 .uw-logo-small {
-  height: 40px;
+ height: 40px;
 }
 
+
 .title.small {
-  font-size: 1.5rem;
-  font-weight: 600;
-  color: #B7A57A;
-  margin: 0;
+ font-size: 1.5rem;
+ font-weight: 600;
+ color: #B7A57A;
+ margin: 0;
 }
+
 
 /* Rules content */
 .rules-box {
-  background-color: #C1A77B;
-  padding: 2rem;
-  border-radius: 15px;
-  max-width: 700px;
-  margin-top: 1.5rem;
-  color: white;
+ background-color: #C1A77B;
+ padding: 2rem;
+ border-radius: 15px;
+ max-width: 700px;
+ margin-top: 1.5rem;
+ color: white;
 }
+
 
 .rules-box ol {
-  list-style: decimal;
-  padding-left: 1.5rem;
+ list-style: decimal;
+ padding-left: 1.5rem;
 }
+
 
 .rules-box li {
-  margin-bottom: 1.5rem;
+ margin-bottom: 1.5rem;
 }
+
 
 .rules-box li strong {
-  font-size: 1.2rem;
+ font-size: 1.2rem;
 }
 
+
 .rules-box li span {
-  display: block;
-  margin-top: 0.25rem;
-  font-size: 1rem;
+ display: block;
+ margin-top: 0.25rem;
+ font-size: 1rem;
 }
+
 
 /* Continue Button */
 .continue-btn {
-  margin-top: 2rem;
-  padding: 0.8rem 2rem;
-  border-radius: 20px;
-  background-color: #EDEDED;
-  color: #B7A57A;
-  font-weight: 600;
-  font-family: 'Irish Grover', cursive;
-  font-size: 1.1rem;
-  border: none;
-  cursor: pointer;
-  transition: 0.3s ease;
+ margin-top: 2rem;
+ padding: 0.8rem 2rem;
+ border-radius: 20px;
+ background-color: #EDEDED;
+ color: #B7A57A;
+ font-weight: 600;
+ font-family: 'Irish Grover', cursive;
+ font-size: 1.1rem;
+ border: none;
+ cursor: pointer;
+ transition: 0.3s ease;
 }
 
+
 .continue-btn:hover {
-  background-color: #b7a57a;
-  color: white;
+ background-color: #b7a57a;
+ color: white;
 }
+
+
 
 
 /* GAME SCREEN STYLING */
 /* still trying to make it better once the hints are inplace*/
 #game-screen {
-  background-color: #F5F5F5;
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center; /* centers the map & other content */
-  font-family: 'Irish Grover', cursive;
-  padding-top: 4rem;
+ background-color: #F5F5F5;
+ height: 100vh;
+ display: flex;
+ flex-direction: column;
+ align-items: center; /* centers the map & other content */
+ font-family: 'Irish Grover', cursive;
+ padding-top: 4rem;
 }
+
 
 /* Timer - Top Left */
 .game-ui-top-left {
-  position: absolute;
-  top: 1rem;
-  left: 1rem;
-  background: #fff;
-  padding: 0.5rem 1rem;
-  border-radius: 10px;
-  box-shadow: 0 0 10px rgba(0,0,0,0.1);
-  font-weight: bold;
-  font-size: 0.85rem;
-  color: #4b2e83;
-  z-index: 2;
+ position: absolute;
+ top: 1rem;
+ left: 1rem;
+ background: #fff;
+ padding: 0.5rem 1rem;
+ border-radius: 10px;
+ box-shadow: 0 0 10px rgba(0,0,0,0.1);
+ font-weight: bold;
+ font-size: 0.85rem;
+ color: #4b2e83;
+ z-index: 2;
 }
+
 
 /* Input Controls */
 .game-input-controls {
-  position: absolute;
-  top: 1rem;
-  left: 50%;
-  transform: translateX(-50%);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  z-index: 2;
+ position: absolute;
+ top: 1rem;
+ left: 50%;
+ transform: translateX(-50%);
+ display: flex;
+ flex-direction: column;
+ align-items: center;
+ z-index: 2;
 }
+
 
 #header {
-  font-size: 1.2rem;
-  color: #4b2e83;
-  margin-bottom: 0.4rem;
+ font-size: 1.2rem;
+ color: #4b2e83;
+ margin-bottom: 0.4rem;
 }
+
 
 .answer-input {
-  padding: 0.6rem 1.2rem;
-  font-size: 1rem;
-  border: 2px solid #B7A57A;
-  border-radius: 25px;
-  width: 250px;
-  max-width: 80vw;
-  outline: none;
-  font-family: 'Open Sans', sans-serif;
-  color: #4b2e83;
-  text-align: center;
-  background-color: #fff;
+ padding: 0.6rem 1.2rem;
+ font-size: 1rem;
+ border: 2px solid #B7A57A;
+ border-radius: 25px;
+ width: 250px;
+ max-width: 80vw;
+ outline: none;
+ font-family: 'Open Sans', sans-serif;
+ color: #4b2e83;
+ text-align: center;
+ background-color: #fff;
 }
+
 
 .answer-input::placeholder {
-  color: #B7A57A;
+ color: #B7A57A;
 }
 
-/* Submit + Score */
-button[onclick="submitAnswer()"] {
-  position: absolute;
-  bottom: 80px;
-  left: 1rem;
-  background-color: #4b2e83;
-  color: white;
-  padding: 0.6rem 1.6rem;
-  font-size: 0.9rem;
-  border: none;
-  border-radius: 20px;
-  cursor: pointer;
-  font-family: 'Open Sans', sans-serif;
-  z-index: 2;
+
+.game-submit-footer {
+ position: absolute;
+ bottom: 80px;
+ left: 50%;
+ transform: translateX(-50%);
+ display: flex;
+ align-items: center;
+ gap: 2rem;
+ z-index: 2;
 }
 
-button[onclick="submitAnswer()"]:hover {
-  background-color: #6A4EA3;
+
+.game-submit-footer button {
+ background-color: #4b2e83;
+ color: white;
+ padding: 1rem 2rem;
+ font-size: 1.2rem;
+ border: none;
+ border-radius: 20px;
+ cursor: pointer;
+ font-family: 'Open Sans', sans-serif;
 }
 
-#dubsScore {
-  position: absolute;
-  bottom: 80px;
-  left: 120px;
-  font-size: 1rem;
-  font-weight: 600;
-  color: #B7A57A;
-  z-index: 2;
+
+.game-submit-footer button:hover {
+ background-color: #6A4EA3;
 }
+
+
+.game-submit-footer #dubsScore {
+ font-size: 1.2rem;
+ font-weight: 600;
+ color: #B7A57A;
+}
+
 
 /* Map */
 #map {
-  width: 90%;
-  max-width: 900px;
-  height: 70vh;
-  margin: 0 auto 1rem auto; /* center horizontally + bottom margin */
-  border-radius: 20px;
-  overflow: hidden;
-  box-shadow: 0 0 12px rgba(0, 0, 0, 0.15);
-  z-index: 1;
+ width: 90%;
+ max-width: 900px;
+ height: 70vh;
+ margin: 0 auto 1rem auto; /* center horizontally + bottom margin */
+ border-radius: 20px;
+ overflow: hidden;
+ box-shadow: 0 0 12px rgba(0, 0, 0, 0.15);
+ z-index: 1;
 }
+
+
 
 
 /* CORRECT SCREEN STYLING */
 .correct-screen {
-  height: 100vh;
-  width: 100vw;
-  background: url('../assets/dubs.jpg') no-repeat center center fixed;
-  background-size: cover;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-family: 'Irish Grover', cursive;
-  padding: 2rem;
+ height: 100vh;
+ width: 100vw;
+ background: url('../assets/dubs.jpg') no-repeat center center fixed;
+ background-size: cover;
+ display: flex;
+ align-items: center;
+ justify-content: center;
+ font-family: 'Irish Grover', cursive;
+ padding: 2rem;
 }
 
+
 .correct-box {
-  background-color: #C1A77B;
-  padding: 2rem;
-  border-radius: 16px;
-  width: 350px;
-  text-align: center;
-  position: absolute;          /* changed from relative to absolute */
-  top: 50%;
-  right: 3rem;                 /* pushes it to the right side of screen */
-  transform: translateY(-50%);
-  color: white;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+ background-color: #C1A77B;
+ padding: 3rem 2.5rem; 
+ border-radius: 16px;
+ width: 500px;
+ min-height: 400px;
+ text-align: center;
+ position: absolute;          /* changed from relative to absolute */
+ top: 50%;
+ right: 3rem;                 /* pushes it to the right side of screen */
+ transform: translateY(-50%);
+ color: white;
+ box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
 }
+
 
 /* Move score badge outside top-right corner */
 .correct-box .score-badge {
-  position: absolute;
-  top: -1.2rem;                /* move above the box */
-  right: -1.2rem;              /* move slightly outside the box */
-  background-color: #4b2e83;
-  color: white;
-  padding: 0.4rem 0.8rem;
-  border-radius: 10px;
-  font-size: 0.85rem;
-  font-weight: bold;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+ position: absolute;
+ top: -1.2rem;                /* move above the box */
+ right: -1.2rem;              /* move slightly outside the box */
+ background-color: #4b2e83;
+ color: white;
+ padding: 0.4rem 0.8rem;
+ border-radius: 10px;
+ font-size: 0.85rem;
+ font-weight: bold;
+ box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
 }
+
 
 .correct-title {
-  font-size: 2.2rem;
-  margin-bottom: 0.5rem;
+ font-size: 2.2rem;
+ margin-bottom: 0.5rem;
 }
+
 
 .emoji {
-  font-size: 2rem;
-  margin: 0.5rem 0;
+ font-size: 2rem;
+ margin: 0.5rem 0;
 }
+
 
 .streak-text {
-  font-size: 1.2rem;
-  margin-bottom: 1.5rem;
+ font-size: 1.2rem;
+ margin-bottom: 1.5rem;
 }
+
 
 .next-btn {
-  background-color: #4b2e83;
-  color: white;
-  border: none;
-  padding: 0.7rem 1.4rem;
-  font-size: 1rem;
-  border-radius: 25px;
-  cursor: pointer;
-  font-family: 'Irish Grover', cursive;
+ background-color: #4b2e83;
+ color: white;
+ border: none;
+ padding: 0.7rem 1.4rem;
+ font-size: 1rem;
+ border-radius: 25px;
+ cursor: pointer;
+ font-family: 'Irish Grover', cursive;
 }
 
+
 .next-btn:hover {
-  background-color: #6A4EA3;
+ background-color: #6A4EA3;
 }
 
 
 /* WRONG SCREEN STYLING */
 #wrong-screen {
-  background: url('../assets/dubs.jpg') no-repeat center center;
-  background-size: cover;
-  height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
-  padding-right: 3rem;
-  font-family: 'Irish Grover', cursive;
+ background: url('../assets/dubs.jpg') no-repeat center center;
+ background-size: cover;
+ height: 100vh;
+ display: flex;
+ align-items: center;
+ justify-content: flex-end;
+ padding-right: 3rem;
+ font-family: 'Irish Grover', cursive;
 }
+
 
 /* Main wrong-box container */
 .wrong-box {
-  background-color: #C1A77B;
-  padding: 2rem;
-  border-radius: 16px;
-  width: 350px;
-  text-align: center;
-  position: relative;
-  color: white;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+ background-color: #C1A77B;
+ padding: 3rem 2.5rem;
+ border-radius: 16px;
+ width: 500px;
+ min-height: 400px;
+ text-align: center;
+ position: absolute;
+ top: 50%;
+ right: 3rem;
+ transform: translateY(-50%);
+ color: white;
+ box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
 }
+
 
 /* Score badge */
 .wrong-box .score-badge {
-  position: absolute;
-  top: -1.2rem;
-  right: -1.2rem;
-  background-color: #4b2e83;
-  color: white;
-  padding: 0.4rem 0.8rem;
-  border-radius: 10px;
-  font-size: 0.85rem;
-  font-weight: bold;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+ position: absolute;
+ top: -1.2rem;
+ right: -1.2rem;
+ background-color: #4b2e83;
+ color: white;
+ padding: 0.4rem 0.8rem;
+ border-radius: 10px;
+ font-size: 0.85rem;
+ font-weight: bold;
+ box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
 }
+
 
 /* Headings & emoji */
 .wrong-title {
-  font-size: 2.5rem;
-  margin: 0.5rem 0;
+ font-size: 2.5rem;
+ margin: 0.5rem 0;
 }
+
 
 .emoji {
-  font-size: 2rem;
-  margin: 0.5rem 0;
+ font-size: 2rem;
+ margin: 0.5rem 0;
 }
+
 
 .round-info {
-  font-size: 1rem;
-  margin-bottom: 0.5rem;
+ font-size: 1rem;
+ margin-bottom: 0.5rem;
 }
 
+
 .wrong-text {
-  font-size: 1rem;
-  margin: 0.5rem 0 1.5rem;
+ font-size: 1rem;
+ margin: 0.5rem 0 1.5rem;
 }
+
 
 /* Buttons */
 .primary-btn,
 .secondary-btn {
-  font-family: 'Irish Grover', cursive;
-  padding: 0.6rem 1.4rem;
-  font-size: 1rem;
-  border-radius: 20px;
-  border: none;
-  cursor: pointer;
-  margin: 0.4rem auto;
-  display: block;
-  width: 70%;
+ font-family: 'Irish Grover', cursive;
+ padding: 0.6rem 1.4rem;
+ font-size: 1rem;
+ border-radius: 20px;
+ border: none;
+ cursor: pointer;
+ margin: 0.4rem auto;
+ display: block;
+ width: 70%;
 }
+
 
 .primary-btn {
-  background-color: #4b2e83;
-  color: white;
+ background-color: #4b2e83;
+ color: white;
 }
+
 
 .primary-btn:hover {
-  background-color: #6A4EA3;
+ background-color: #6A4EA3;
 }
 
+
 .secondary-btn {
-  background-color: transparent;
-  color: white;
-  text-decoration: underline;
+ background-color: transparent;
+ color: white;
+ text-decoration: underline;
 }
+
 
 /*END SCREEN styling */
 #end-screen {
-  background: url('../assets/uw-campus.jpg') no-repeat center center;
-  background-size: cover;
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-family: 'Irish Grover', cursive;
-  color: white;
+ background: url('../assets/uw-campus.jpg') no-repeat center center;
+ background-size: cover;
+ height: 100vh;
+ display: flex;
+ flex-direction: column;
+ align-items: center;
+ justify-content: center;
+ font-family: 'Irish Grover', cursive;
+ color: white;
 }
+
 
 /* UW logo bar at the top right (if needed) */
 .end-logo-box {
-  position: absolute;
-  top: 1rem;
-  right: 2rem;
-  background: rgba(255, 255, 255, 0.9);
-  padding: 0.4rem 0.8rem;
-  border-radius: 10px;
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
+ position: absolute;
+ top: 1rem;
+ right: 2rem;
+ background: rgba(255, 255, 255, 0.9);
+ padding: 0.4rem 0.8rem;
+ border-radius: 10px;
+ display: flex;
+ align-items: center;
+ gap: 0.5rem;
 }
+
 
 .end-logo-box .uw-logo-small {
-  height: 30px;
-  width: auto;
+ height: 30px;
+ width: auto;
 }
 
+
 .end-logo-box .title.small {
-  font-size: 1.2rem;
-  color: #4b2e83;
-  font-family: 'Open Sans', sans-serif;
-  font-weight: bold;
+ font-size: 1.2rem;
+ color: #4b2e83;
+ font-family: 'Open Sans', sans-serif;
+ font-weight: bold;
 }
+
 
 /* Main end box */
 .end-box {
-  background-color: rgba(193, 167, 123, 0.9); /* match #C1A77B with transparency */
-  padding: 2.5rem;
-  border-radius: 16px;
-  text-align: center;
-  width: 400px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+ background-color: rgba(193, 167, 123, 0.9); /* match #C1A77B with transparency */
+ padding: 2.5rem;
+ border-radius: 16px;
+ text-align: center;
+ width: 400px;
+ box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
 }
+
 
 /* Headings and text */
 .end-title {
-  font-size: 2.5rem;
-  margin-bottom: 0.5rem;
-  color: white;
+ font-size: 2.5rem;
+ margin-bottom: 0.5rem;
+ color: white;
 }
 
+
 .end-subtitle {
-  font-size: 1.1rem;
-  margin-bottom: 1.5rem;
-  color: white;
+ font-size: 1.1rem;
+ margin-bottom: 1.5rem;
+ color: white;
 }
+
 
 /* Score box styling */
 .score-box {
-  background-color: #4b2e83;
-  color: white;
-  padding: 1rem;
-  border-radius: 12px;
-  font-size: 1.2rem;
-  font-weight: bold;
-  margin-bottom: 1.5rem;
+ background-color: #4b2e83;
+ color: white;
+ padding: 1rem;
+ border-radius: 12px;
+ font-size: 1.2rem;
+ font-weight: bold;
+ margin-bottom: 1.5rem;
 }
+
 
 .score-box .score-label {
-  font-size: 1rem;
-  margin: 0;
+ font-size: 1rem;
+ margin: 0;
 }
 
+
 .score-box .score-value {
-  font-size: 1.6rem;
-  margin: 0;
+ font-size: 1.6rem;
+ margin: 0;
 }
+
 
 /* Buttons */
 .primary-btn,
 .secondary-btn {
-  font-family: 'Irish Grover', cursive;
-  padding: 0.6rem 1.4rem;
-  font-size: 1rem;
-  border-radius: 20px;
-  border: none;
-  cursor: pointer;
-  margin: 0.4rem auto;
-  display: block;
-  width: 70%;
+ font-family: 'Irish Grover', cursive;
+ padding: 0.6rem 1.4rem;
+ font-size: 1rem;
+ border-radius: 20px;
+ border: none;
+ cursor: pointer;
+ margin: 0.4rem auto;
+ display: block;
+ width: 70%;
 }
+
 
 .primary-btn {
-  background-color: #4b2e83;
-  color: white;
+ background-color: #4b2e83;
+ color: white;
 }
+
 
 .primary-btn:hover {
-  background-color: #6A4EA3;
+ background-color: #6A4EA3;
 }
 
+
 .secondary-btn {
-  background-color: transparent;
-  color: white;
-  text-decoration: underline;
+ background-color: transparent;
+ color: white;
+ text-decoration: underline;
 }
