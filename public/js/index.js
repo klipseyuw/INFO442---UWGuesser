@@ -4,7 +4,7 @@ const ruleHTML = '<section id="rules-screen" class="screen rules-screen hidden">
 
 //<button id="hint-btn" class="hint-btn">Click For Hint!</button>
 
-const mapHTML = '<section id="game-screen" class="screen game-screen hidden"> <div class="game-ui-top-left"><div id="countdown" class="timer">⏱ 00:45</div></div> <div class="game-input-controls"> <h3 id = "header">Type your Guess</h3> <input type="text" id="answerText" placeholder="Answer Here" class="answer-input" /> </div></div><button onclick="submitAnswer()">Submit</button><p id ="dubsScore">Dubs Score: 0</p><div id="map"><script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB41DRUbKWJHPxaFjMAwdrzWzbVKartNGg&callback=initMap&libraries=marker&v=weekly" defer></script></div></section>';
+const mapHTML = '<section id="game-screen" class="screen game-screen hidden"> <div class="game-ui-top-left"><div id="countdown" class="timer">⏱ 00:45</div></div> <div class="game-input-controls"> <h3 id = "header">Type your Guess</h3> <input type="text" id="answerText" placeholder="Answer Here" class="answer-input" /> </div></div><button onclick="submitAnswer()">Submit</button><p id ="dubsScore">Dubs Score: 0</p><div id="map"></div></section>';
 
 const hintHTML = '<section id="hint-screen" class="screen hint-screen hidden"> <div class="game-ui-top-left"> <div id = "countdown" class="timer">⏱ 1:30</div> </div> <div class="hint-options-box"> <form id="building-guess-form"> <label class="hint-option"> <input type="radio" name="building" value="mueller" /> Mueller Hall </label> <label class="hint-option"> <input type="radio" name="building" value="ece" /> ECE </label> <label class="hint-option"> <input type="radio" name="building" value="sav" /> SAV </label> <label class="hint-option"> <input type="radio" name="building" value="paul-allen" /> Paul Allen </label> <button type="submit" class="submit-btn">Submit</button> </form> </div> <div class="arrows"> <span class="arrow">&lt;</span> <span class="arrow">&gt;</span> </div> </section>';
 
@@ -12,7 +12,7 @@ const quizHTML = '<section id="dubs-quiz" class="screen dubs-quiz hidden"> <div 
 
 const correctHTML = '<section id="correct-screen" class="screen correct-screen hidden"> <div class="correct-box"> <div class="score-badge">Dubs score: <span id="score-count"></span> identified!</div> <h3 id = "round-info" class="round-info">Round 1 out of 5</h3> <h1 class="correct-title">Correct!</h1> <div class="emoji">🔥</div> <p class="streak-text">you\'re on a streak!</p> <button id="next-round-btn" class="next-btn" onclick="switchToMapPage()">Next Round</button> </div> </section> ';
 
-const wrongHTML = '<section id="wrong-screen" class="screen wrong-screen hidden"> <div class="wrong-box"> <div class="score-badge">Dubs score: <span id="wrong-score-count"></span> identified!</div> <h3 id = "round-info" class="round-info">Round 1 out of 5</h3> <h1 class="wrong-title">Wrong</h1> <div class="emoji">🚨</div> <p class="wrong-text">Even dubs gets turned around<br />sometimes!</p> <button id="retry-btn" class="primary-btn" onclick="switchToMapPageReset()">Play again</button> <button id="later-btn" class="secondary-btn" onclick="switchToMainPage()">Play later</button> </div> </section> ';
+const wrongHTML = '<section id="wrong-screen" class="screen wrong-screen hidden"> <div class="wrong-box"> <div class="score-badge">Dubs score: <span id="wrong-score-count"></span> identified!</div> <h3 id = "round-info" class="round-info">Round 1 out of 5</h3> <h1 id="wrong-title" class="wrong-title">Wrong</h1> <div class="emoji">🚨</div> <p class="wrong-text">Even dubs gets turned around<br />sometimes!</p> <button id="retry-btn" class="primary-btn" onclick="switchToMapPageReset()">Play again</button> <button id="later-btn" class="secondary-btn" onclick="switchToMainPage()">Play later</button> </div> </section> ';
 
 const endHTML = '<section id="end-screen" class="screen end-screen hidden"> <div class="end-logo-box"> <img src="assets/washington_huskies_2016-pres.webp" alt="UW Logo" class="uw-logo-small" /> <h1 class="title small">Guessr</h1> </div> <div class="end-box"> <h1 class="end-title">Congrats!</h1> <p class="end-subtitle">You made it to the end!</p> <div class="score-box"> <p class="score-label">Dubs score:</p> <p class="score-value"><span id="final-score">4/10</span> identified!</p> </div> <button id="play-again-btn" class="primary-btn" onclick="switchToMapPageReset()">Play again</button> <button id="exit-btn" class="secondary-btn" onclick="switchToMainPage()">Play later</button> </div> </section>';
 let panorama;
@@ -65,7 +65,7 @@ const buildings =
 [{lat: 47.6559409, lng: -122.3075026}, {name: "Suzzalo Library", lat: 47.6557702, lng: -122.3078427}],
 [{lat: 47.6570572, lng: -122.3081083}, {name: "Savery Hall", lat: 47.6571049, lng: -122.3084395}],
 [{lat: 47.6537402, lng: -122.3022781}, {name: "IMA", lat: 47.6536324, lng: -122.301743}],
-[{lat: 47.6594996, lng: -122.3092793}, {name: "Paccar Hall", lat: 47.6592885, lng: -122.309018}],
+[{lat: 47.6594996, lng: -122.3092793}, {name: "Paccar Hall", lat: 47.6592853, lng: -122.3088555}],
 [{lat: 47.6611535, lng: -122.3049842}, {name: "Mcarty Hall", lat: 47.6607858, lng: -122.3050633}],
 [{lat: 47.6572705, lng: -122.3099538}, {name: "Parrington Hall", lat: 47.6574064, lng: -122.3103142}],
 [{lat: 47.6568756, lng: -122.3038113}, {name: "Padelford Hall", lat: 47.6569805, lng: -122.3043341}],
@@ -126,6 +126,7 @@ function switchToWrongAnswerPage()
     document.body.innerHTML = wrongHTML;
     document.getElementById('round-info').innerHTML = "Round " + (buildings.length - buildingsInstance.length) + "/" + buildings.length;
     document.getElementById('wrong-score-count').innerHTML = score;
+    document.getElementById('wrong-title').innerHTML = "Wrong! Answer is: " + buildingsInstance[currentBuildingIndex][1].name;
 }
 function switchToEndPage()
 {
