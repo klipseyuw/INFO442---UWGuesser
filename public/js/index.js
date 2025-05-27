@@ -28,7 +28,7 @@ In this format, add it to the list below:
 Reopen or refresh your game to apply the changes.
 */
 const buildings = 
-[[{lat: 47.6557022, lng: -122.3045488}, {name: "HUB", lat: 47.6553893, lng: -122.3050845}], 
+[[{lat: 47.6557022, lng: -122.3045488}, {name: "HUB", lat: 47.6553893, lng: -122.3050845}],
 [{lat: 47.6561734, lng: -122.3093858}, {name: "Kane Hall", lat: 47.6567387, lng: -122.3092925}], 
 [{lat: 47.6559409, lng: -122.3075026}, {name: "Suzzalo Library", lat: 47.6557702, lng: -122.3078427}],
 [{lat: 47.6570572, lng: -122.3081083}, {name: "Savery Hall", lat: 47.6571049, lng: -122.3084395}],
@@ -60,6 +60,7 @@ const correctHTML = '<section id="correct-screen" class="screen correct-screen h
 const wrongHTML = '<section id="wrong-screen" class="screen wrong-screen hidden"> <div class="wrong-box"> <div class="score-badge">Dubs score: <span id="wrong-score-count"></span> identified!</div> <h3 id = "round-info" class="round-info">Round 1 out of 5</h3> <h1 id="wrong-title" class="wrong-title">Wrong</h1> <div class="emoji">🚨</div> <p class="wrong-text">Even dubs gets turned around<br />sometimes!</p> <button id="retry-btn" class="primary-btn" onclick="switchToMapPageReset()">Play again</button> <button id="later-btn" class="secondary-btn" onclick="switchToMainPage()">Play later</button> </div> </section> ';
 
 const endHTML = '<section id="end-screen" class="screen end-screen hidden"> <div class="end-logo-box"> <img src="assets/washington_huskies_2016-pres.webp" alt="UW Logo" class="uw-logo-small" /> <h1 class="title small">Guessr</h1> </div> <div class="end-box"> <h1 class="end-title">Congrats!</h1> <p class="end-subtitle">You made it to the end!</p> <div class="score-box"> <p class="score-label">Dubs score:</p> <p class="score-value"><span id="final-score">4/10</span> identified!</p> </div> <button id="play-again-btn" class="primary-btn" onclick="switchToMapPageReset()">Play again</button> <button id="exit-btn" class="secondary-btn" onclick="switchToMainPage()">Play later</button> </div> </section>';
+
 let panorama;
 let score;
 let currentBuildingIndex;
@@ -202,20 +203,20 @@ function setNextMap() {
         return;
     }
 
-    const max = buildingsInstance.length;
+    let max = buildingsInstance.length;
     
     currentBuildingIndex = Math.floor(Math.random() * max);
 
-    const astorPlace = buildingsInstance[currentBuildingIndex][0];
+    let astorPlace = buildingsInstance[currentBuildingIndex][0];
     // Set up the map
-    const map = new google.maps.Map(document.getElementById("map"), {
+    let map = new google.maps.Map(document.getElementById("map"), {
     center: astorPlace,
     zoom: 18,
     mapTypeId: google.maps.MapTypeId.ROADMAP,
     disableDefaultUI: true
     });
 
-    const buildingIcon = document.createElement("img");
+    let buildingIcon = document.createElement("img");
 
     buildingIcon.src = "./images/BuildingToGuess.svg";
 
@@ -230,13 +231,11 @@ function setNextMap() {
 
     buildingMarker.setMap(map);
 
-    const dubsIcon = document.createElement("img");
+    let dubsIcon = document.createElement("img");
 
         dubsIcon.src = "./images/Dubs.svg";
 
-    const dubsRandomizedLoc = buildingsInstance[currentBuildingIndex][1];
-    dubsRandomizedLoc.lat += Math.random() * 0.001;
-    dubsRandomizedLoc.lng += Math.random() * 0.001; 
+    let dubsRandomizedLoc = [{lat: buildingsInstance[currentBuildingIndex][1].lat + Math.random() * 0.001, lng: buildingsInstance[currentBuildingIndex][1].lng + Math.random() * 0.001}];
 
     dubsMarker = new google.maps.Marker({
         position: dubsRandomizedLoc,
