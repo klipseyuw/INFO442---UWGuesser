@@ -1,5 +1,5 @@
 // SET THE TIME LIMIT OF YOUR CHOICE HERE IN SECONDS!
-const timeLimit = 60;
+const timeLimit = 90;
 
 /* 
 
@@ -31,19 +31,7 @@ const buildings =
 [[{lat: 47.6557022, lng: -122.3045488}, {name: "HUB", lat: 47.6553893, lng: -122.3050845}],
 [{lat: 47.6561734, lng: -122.3093858}, {name: "Kane Hall", lat: 47.6567387, lng: -122.3092925}], 
 [{lat: 47.6559409, lng: -122.3075026}, {name: "Suzzalo Library", lat: 47.6557702, lng: -122.3078427}],
-[{lat: 47.6570572, lng: -122.3081083}, {name: "Savery Hall", lat: 47.6571049, lng: -122.3084395}],
-[{lat: 47.6537402, lng: -122.3022781}, {name: "IMA", lat: 47.6536324, lng: -122.301743}],
-[{lat: 47.6594996, lng: -122.3092793}, {name: "Paccar Hall", lat: 47.6592853, lng: -122.3088555}],
-[{lat: 47.6611535, lng: -122.3049842}, {name: "Mcarty Hall", lat: 47.6607858, lng: -122.3050633}],
-[{lat: 47.6572705, lng: -122.3099538}, {name: "Parrington Hall", lat: 47.6574064, lng: -122.3103142}],
-[{lat: 47.6568756, lng: -122.3038113}, {name: "Padelford Hall", lat: 47.6569805, lng: -122.3043341}],
-[{lat: 47.6547817, lng: -122.308488}, {name: "Johnson Hall", lat: 47.65464, lng: -122.3089812}],
-[{lat: 47.6520118, lng: -122.3076246}, {name: "Anderson Hall", lat: 47.6517702, lng: -122.3076372}],
-[{lat: 47.654397, lng: -122.3046174}, {name: "Loew Hall", lat: 47.654356, lng: -122.3045936}],
-[{lat: 47.653703, lng: -122.3082073}, {name: "Department of Chemistry", lat: 47.6536421, lng: -122.3088239}],
-[{lat: 47.6566197, lng: -122.30759}, {name: "Smith Hall", lat: 47.656444, lng: -122.3075479}],
-[{lat: 47.6552755, lng: -122.3081542}, {name: "Mary Gates Hall", lat: 47.6549795, lng: -122.308008}],
-[{lat: 47.6514765, lng: -122.3082401}, {name: "Bloedel Hall", lat: 47.6513557, lng: -122.3079801}]]
+[{lat: 47.6570572, lng: -122.3081083}, {name: "Savery Hall", lat: 47.6571049, lng: -122.3084395}]];
 
 const mainHTML = '<section id="start-screen" class="screen start-screen"><div class="overlay"><div class="start-logo-box"><img src="assets/washington_huskies_2016-pres.webp" alt="UW Logo" class="uw-logo" /><h1 class="title">Guessr</h1></div><button id="start-btn" class="start-button" onclick="switchToRulePage()">Get started</button></div></section>';
 
